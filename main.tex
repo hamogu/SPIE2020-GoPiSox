@@ -1,0 +1,119 @@
+\documentclass[]{spie}  %>>> use for US letter paper
+%\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
+%\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
+
+\renewcommand{\baselinestretch}{1.0} % Change to 1.65 for double spacing
+ 
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Ray-tracing a small orbital mission for soft-X-ray polarimetry}
+
+\author[a]{Hans Moritz G\"unther}
+\author[a]{Hermann L. Marshall}
+\affil[a]{MIT Kavli Institute for Astrophysics and Space Research, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+
+\authorinfo{Send correspondence to H.M.G. (E-mail: hgunther@mit.edu)}
+
+% Option to view page numbers
+\pagestyle{empty} % change to \pagestyle{plain} for page numbers   
+\setcounter{page}{301} % Set start page numbering at e.g. 301
+ 
+\begin{document} 
+\maketitle
+
+\begin{abstract}
+X-ray polarimetry is still largely uncharted territory. With the upcoming launch of IXPE, we will learn a lot more about X-ray polarization at energies above 2~keV, but so far no current or accepted mission provides observational capabilities below 2~keV. We present ray-tracing results for a small orbital mission that could be launched within NASA's Pioneer or SmallSat cost-cap to provide X-ray polarimetry below 1 keV. The design is based on the use of laterally-graded multi-layer mirrors, a concept that we have developed theoretically for the REDSoX Polarimeter\cite{10.1117/1.JATIS.4.1.011005} and that has most components verified in the laboratory.
+In this contribution, we describe a single channel orbital mission based on the same idea, but modified to the unique cost and space requirements. In particular, we use the ray-traces to define the maximum size of the dispersion gratings that can be used and to determine an alignment budget.
+
+\end{abstract}
+
+% Include a list of keywords after the abstract 
+\keywords{ray-tracing, X-ray, polarimetry, CAT (critical angle transmission) grating, multi-layer mirror}
+
+\section{INTRODUCTION}
+\label{sec:intro}  % \label{} allows reference to this section
+
+
+\section{FIGURES AND TABLES}
+
+Figures are numbered in the order of their first citation.  They should appear in numerical order and on or after the same page as their first reference in the text.  Alternatively, all figures may be placed at the end of the manuscript, that is, after the Reference section.  It is preferable to have figures appear at the top or bottom of the page.  Figures, along with their captions, should be separated from the main text by at least 0.2 in.\ or 5 mm.  
+
+Figure captions are centered below the figure or graph.  Figure captions start with the figure number in 9-point bold font, followed by a period; the text is in 9-point normal font; for example, ``{\footnotesize{Figure 3.}  Original image...}''.  See Fig.~\ref{fig:example} for an example of a figure caption.  When the caption is too long to fit on one line, it should be justified to the right and left margins of the body of the text.  
+
+Tables are handled identically to figures, except that their captions appear above the table. 
+
+% Note: If compiling with LaTeX+dvipdf, please ensure images generated from 
+% other software packages have their bounding boxes set correctly.
+   \begin{figure} [ht]
+   \begin{center}
+   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \includegraphics[height=5cm]{mcr3b.eps}
+   \end{tabular}
+   \end{center}
+   \caption[example] 
+%>>>> use \label inside caption to get Fig. number with \ref{}
+   { \label{fig:example} 
+Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
+   \end{figure} 
+
+\section{MULTIMEDIA FIGURES - VIDEO AND AUDIO FILES}
+
+Video and audio files can be included for publication. See Tab.~\ref{tab:Multimedia-Specifications} for the specifications for the mulitimedia files. Use a screenshot or another .jpg illustration for placement in the text. Use the file name to begin the caption. The text of the caption must end with the text ``http://dx.doi.org/doi.number.goes.here'' which tells the SPIE editor where to insert the hyperlink in the digital version of the manuscript. 
+
+Here is a sample illustration and caption for a multimedia file:
+
+   \begin{figure} [ht]
+   \begin{center}
+   \begin{tabular}{c} 
+   \includegraphics[height=5cm]{MultimediaFigure.jpg}
+	\end{tabular}
+	\end{center}
+   \caption[example] 
+   { \label{fig:video-example} 
+A label of “Video/Audio 1, 2, …” should appear at the beginning of the caption to indicate to which multimedia file it is linked . Include this text at the end of the caption: \url{http://dx.doi.org/doi.number.goes.here}}
+   \end{figure} 
+   
+   \begin{table}[ht]
+\caption{Information on video and audio files that must accompany a manuscript submission.} 
+\label{tab:Multimedia-Specifications}
+\begin{center}       
+\begin{tabular}{|l|l|l|}
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Item & Video & Audio  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  File name & Video1, video2... & Audio1, audio2...   \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Number of files & 0-10 & 0-10  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Size of each file & 5 MB & 5 MB  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  File types accepted & .mpeg, .mov (Quicktime), .wmv (Windows Media Player) & .wav, .mp3  \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+
+\appendix    %>>>> this command starts appendixes
+
+\section{MISCELLANEOUS FORMATTING DETAILS}
+\label{sec:misc}
+
+It is often useful to refer back (or forward) to other sections in the article.  Such references are made by section number.  When a section reference starts a sentence, Section is spelled out; otherwise use its abbreviation, for example, ``In Sec.~2 we showed...'' or ``Section~2.1 contained a description...''.  References to figures, tables, and theorems are handled the same way.
+
+
+\acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS}       
+Support for this work was provided in part through NASA grant NNX17AG43G and Smithsonian Astrophysical Observatory (SAO)
+contract SV3-73016 to MIT for support of the {\em Chandra} X-Ray Center (CXC),
+which is operated by SAO for and on behalf of NASA under contract NAS8-03060.
+The simulations make use of Astropy, a community-developed core Python package
+for Astronomy\cite{astropy1,astropy2}, numpy\cite{numpy}, and
+IPython\cite{IPython}. Displays are done with mayavi\cite{mayavi} and matplotlib\cite{matplotlib}.
+
+
+% References
+\bibliography{report} % bibliography data in report.bib
+\bibliographystyle{spiebib} % makes bibtex use spiebib.bst
+
+\end{document} 
