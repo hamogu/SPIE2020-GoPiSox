@@ -24,7 +24,7 @@
 \maketitle
 
 \begin{abstract}
-X-ray polarimetry is still largely uncharted territory. With the upcoming launch of IXPE, we will learn a lot more about X-ray polarization at energies above 2~keV, but so far no current or accepted mission provides observational capabilities below 2~keV. We present ray-tracing results for a small orbital mission that could be launched within NASA's Pioneer or SmallSat cost-cap to provide X-ray polarimetry below 1 keV. The design is based on the use of laterally-graded multi-layer mirrors, a concept that we have developed theoretically for the REDSoX Polarimeter\cite{10.1117/1.JATIS.4.1.011005} and that has most components verified in the laboratory.
+X-ray polarimetry is still largely uncharted territory. With the upcoming launch of IXPE, we will learn a lot more about X-ray polarization at energies above 2~keV, but so far no current or accepted mission provides observational capabilities below 2~keV. We present ray-tracing results for a small orbital mission that could be launched within NASA's Pioneer or SmallSat cost-cap to provide X-ray polarimetry below 1 keV. The design is based on the use of laterally-graded multi-layer mirrors, a concept that we have developed theoretically for the REDSoX Polarimeter\cite{redsox} and that has most components verified in the laboratory.
 In this contribution, we describe a single channel orbital mission based on the same idea, but modified to the unique cost and space requirements. In particular, we use the ray-traces to define the maximum size of the dispersion gratings that can be used and to determine an alignment budget.
 
 \end{abstract}
@@ -33,7 +33,33 @@ In this contribution, we describe a single channel orbital mission based on the 
 \keywords{ray-tracing, X-ray, polarimetry, CAT (critical angle transmission) grating, multi-layer mirror}
 
 \section{INTRODUCTION}
-\label{sec:intro}  % \label{} allows reference to this section
+\label{sec:intro}
+X-rays can provide unique insight into the hot and energetic universe. While X-ray photometry and spectroscopy is now routinely performed with a number of missions, most prominently XMM-Newton and Chandra, there is no currently operating observatory to perform X-ray polarimetry and only for a single source (the Crab nebula) has there ever been a significant detection of polarized X-rays\cite{1972ApJ...174L...1N,1978ApJ...220L.117W}.
+IXPE\cite{IXPE} will be launched in 2021 and provide this capability for X-rays above 2~keV, but there is still no instrument in sight for soft X-ray polarimetry. Yet, a range of open science questions for several classes of astrophysical sources can only be answered with soft X-ray polarimetry.
+
+
+\section{MISSION OVERVIEW}
+Over the years, we have developed and refined a design for a soft X-ray polarimeter, called ``REDSoX'', which is based on reflection of a multi-layer mirror.  
+Details of the REDSoX design are discussed in Ref.~\citenum{redsox}, more details of ray-trace calculations are presented in Ref.~\citenum{redsoxtrace}.
+In short, X-rays are focussed into a converging beam using a mirror. Beyond the mirror, the photons encounter critical-angle transmission (CAT) gratings. A fraction of the photons passes through (0th order) onto an imaging detector, which can be used to confirm the accuracy of the pointing and provide an X-ray spectrum with the intrinsic energy resolution of the detector. Most photons however, are diffracted. By selecting the blaze angle (the angle between the grating normal and the direction of the incoming photons), we can optimize the fraction of photons diffracted into the zeroth order. Photons of longer wavelength are diffracted further and thus hit the focal plane further away from the direct image than photons with a shorter wavelength. In the focal plane, a multi-layer mirror is located. The thickness of the layers varies with position (``laterally graded'') and is chosen such that every photon interacts with the mirror at a position where the mirror spacing matches Bragg condition for photons of that wavelength. The mirror is tilted by about 45 degrees with respect to the incoming photons, and thus only photons with one polarization direction are reflected, while photons with a perpendicular polarization are absorbed. A CCD detects the reflected photons. The requirement to match the photon position to the Bragg peak on the multi-layer mirror sets a limit to the width of the mirror point-spread function in the dispersion direction. We achieve this by sub-aperturing, i.e.\ we use only wedge-shaped mirror modules and not full circles.
+
+Measurement at several angles are required to reconstruct the polarization fraction and angle. In our design, this can be achieved with a single multi-layer mirror, if the entire instrument rotates (either continuously or in steps) or with two or three channels, each with its own sub-aperture, multi-layer mirror and detector.
+
+REDSoX is designed as a sounding rocket payload with very short exposure times, but loose mass and space requirements. In this paper, we present ray-traces for a variant of the REDSoX design optimized for a small orbital mission, e.g.\ in NASA's Astrophysics Pioneer or SmallSat program. Compared to REDSoX, we need to shorten the focal length to fit the mission into the envelope of a secondary payload and reduce the area covered by the mirrors; on the other hand, exposure times can be much longer. While a sounding rocket gives only a few minutes of X-ray observing time, we can integrate for months in an orbital missions. Much of the trades and studies done for REDSox\cite{redsoxtrace} are applicable here, too, just with different numbers for the focal length, but others are unique to this design, e.g.\ the much longer exposure times require a much more careful estimate of the background that is picked up in the detectors.
+While the sounding rocket REDSoX is designed with three polarization channels, an orbital mission with much longer exposure times can work with just one or two channels because lower effective areas can be offset by longer exposure times.
+
+In this work, we consider a system with a focal length of just 1.25~m and a single polarimetry channel. An overview of the design is shown in Figure~\ref{fig:3D}. This matches our submitted Astrophysics Pioneer proposal and represents the simplest possible instrument to measure soft X-ray polarimetry. It is easy to extent this design by adding another polarimetry channel for redundancy, increased effective area, and the opportunity to measure fast changes in the polarization (since two polarization directions are observed simultaneously, instead of rotating the instrument). 
+
+   \begin{figure} [ht]
+   \begin{center}
+   \includegraphics[height=5cm]{PiSox3d.pdf}
+   \end{center}
+   \caption[example] 
+   { \label{fig:example} 
+Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
+   \end{figure} 
+
+\section{SETUP FOR RAY-TRACES}
 
 
 \section{FIGURES AND TABLES}
