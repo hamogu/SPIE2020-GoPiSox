@@ -48,86 +48,112 @@ Measurement at several angles are required to reconstruct the polarization fract
 REDSoX is designed as a sounding rocket payload with very short exposure times, but loose mass and space requirements. In this paper, we present ray-traces for a variant of the REDSoX design optimized for a small orbital mission, e.g.\ in NASA's Astrophysics Pioneer or SmallSat program. Compared to REDSoX, we need to shorten the focal length to fit the mission into the envelope of a secondary payload and reduce the area covered by the mirrors; on the other hand, exposure times can be much longer. While a sounding rocket gives only a few minutes of X-ray observing time, we can integrate for months in an orbital missions. Much of the trades and studies done for REDSox\cite{redsoxtrace} are applicable here, too, just with different numbers for the focal length, but others are unique to this design, e.g.\ the much longer exposure times require a much more careful estimate of the background that is picked up in the detectors.
 While the sounding rocket REDSoX is designed with three polarization channels, an orbital mission with much longer exposure times can work with just one or two channels because lower effective areas can be offset by longer exposure times.
 
-In this work, we consider a system with a focal length of just 1.25~m and a single polarimetry channel. An overview of the design is shown in Figure~\ref{fig:3D}. This matches our submitted Astrophysics Pioneer proposal and represents the simplest possible instrument to measure soft X-ray polarimetry. It is easy to extent this design by adding another polarimetry channel for redundancy, increased effective area, and the opportunity to measure fast changes in the polarization (since two polarization directions are observed simultaneously, instead of rotating the instrument). 
+In this work, we consider a system with a focal length of just 1.25~m and a single polarimetry channel. An overview of the design is shown in Figure~\ref{fig:3d}. This matches our submitted Astrophysics Pioneer proposal and represents the simplest possible instrument to measure soft X-ray polarimetry. It is easy to extent this design by adding another polarimetry channel for redundancy, increased effective area, and the opportunity to measure fast changes in the polarization (since two polarization directions are observed simultaneously, instead of rotating the instrument). 
 
    \begin{figure} [ht]
    \begin{center}
-   \includegraphics[height=5cm]{PiSox3d.pdf}
+   \includegraphics[height=5cm]{3D.pdf}
+   \includegraphics[height=5cm]{3Ddetector.pdf}
    \end{center}
-   \caption[example] 
-   { \label{fig:example} 
-Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
-   \end{figure} 
+   \caption
+   { \label{fig:3d}3D rendering of the instrument design and a ray-trace for monoenergetic rays of 0.3~keV. The ray-trace setup makes some simplifications. In particular, the mirror is not modeled in 3D, but approximated by a 2D lens. In the 3D view, the position of the mirror modules is just indicated schematically by a cylinder that has the same radius as the outermost mirror surface. This is a monochromatic simulation with photon energies of 0.3 keV. Only rays that are detected in the end are shown and rays are colored according to the grating diffraction order. The zeroth order is shown with gray rays, the first order with green rays. The green rays bounce of the multilayer-mirror (purple) because they hit a detector (blue). The  second detector (also blue) images the zeroth order, but also photons diffracted into order -1. \emph{panel a:} View of the full instrument. The astrophysical source is located along the top left. Rays are shown starting at the entrance aperture. \emph{panel b:} Zoom into the focal plane with multi-layer mirror (purple) and two detectors (blue). 
+}
+   \end{figure}
+
+Figure~\ref{fig:3d} shows a ray-trace through our one-channel system. All rays i the figure have the same energy (0.3~keV). Because the mirrors deliver a converging beam, the angle between ray and multi-layer mirror spans a range of incident angle. Thus, rays need to reach the multi-layer mirror at slightly different angles to fullfill the Bragg condition. In panel (b) of the figure, it can be seen that the rays fall into two groups depending on if they pass through the upper or lower sector of gratings. See Ref.~\citenum{redsox} for a derivation of the grating position depending on the multi-layer mirror gradient and position.
 
 \section{SETUP FOR RAY-TRACES}
+We perform a geometric ray-trace with the MARXS code, which follows individual rays through the system from the entrance aperture to the detector. Simulations are performed with MARXS 1.2\cite{marxs,marxs1.2}. MARXS is
+written in Python and available under the GNU license v3. The code is available on github\footnote{\url{https://github.com/chandra-marx/marxs}}. Specific code for the simulations of the instrument shown here is also available\footnote{\url{https://github.com/X-raypol/ray-trace}}; we used the version with commit hash 13b10be. More details on the code can be found in proceedings describing its application for other missions\cite{10.1117/12.2525814,10.1117/12.2312678}.
 
+Every simulation contains some simplification of reality, e.g., because certain aspects of the design are not known yet, laboratory data about performance must be extrapolated, or simply because computational cost puts limits on how many photons can be run through a simulation. Our simulations are set up with a relatively simplistic mirror model. Instead of a three dimensional structure, the mirror is implemented as plane perpendicual to the optical axis. When rays intersect the plane, their directions are modified as if they pass a perfect lens. In the next step, additional scatter in the plane of reflection is added. For each ray, the scattering angle is drawn from a Gaussian distribution, where the width of the distribution is tuned to achieve a PSF size that matches the PSFs measured or exepcted for the type of mirror used. We use 12 arcsec for the $\sigma$ of the Gaussian.
 
-\section{FIGURES AND TABLES}
+Our instrument uses CAT gratings manufactured from Si wafers at the MIT Space Nanotechnology Laboratory
+\cite{Heilmann:11,doi:10.1117/12.2188525,10.1117/12.2314180,10.1117/12.2529354}. The grating efficiency of these gratings is calculated based on simulations and verified in the laboratory; a table if efficiencies is an input to our simulations. The high aspect-ratio grating bars are 4~$\mu$m deep and supported by an L1 support structure running perpendicular to the grating bars themselves and the entire membrane (bars and L1) is mechanically stablized by an L2 support structure, which is 0.5~mm deep. Absorption and diffraction of photons by the L1 and L2 support structures is included in our simulations. The grating membrane is surrounded by a 0.5 mm wide frame of solide Si for handling and glued into a grating holder.
 
-Figures are numbered in the order of their first citation.  They should appear in numerical order and on or after the same page as their first reference in the text.  Alternatively, all figures may be placed at the end of the manuscript, that is, after the Reference section.  It is preferable to have figures appear at the top or bottom of the page.  Figures, along with their captions, should be separated from the main text by at least 0.2 in.\ or 5 mm.  
+Laterally graded multi-layer mirrors can be made from a variety of materials. We use a Cr/Sc mirror, because this combination of material promises a good reflectivity in the bandpass of interest. The detectors will be CCD ID-94 detectors produced by Lincoln Labs, we use the quantum efficiencies measure for Suzaku CCDs\cite{2007PASJ...59S..23K} for our ray-traces.
 
-Figure captions are centered below the figure or graph.  Figure captions start with the figure number in 9-point bold font, followed by a period; the text is in 9-point normal font; for example, ``{\footnotesize{Figure 3.}  Original image...}''.  See Fig.~\ref{fig:example} for an example of a figure caption.  When the caption is too long to fit on one line, it should be justified to the right and left margins of the body of the text.  
-
-Tables are handled identically to figures, except that their captions appear above the table. 
-
-% Note: If compiling with LaTeX+dvipdf, please ensure images generated from 
-% other software packages have their bounding boxes set correctly.
+\section{PERFORMANCS}
+\label{sect:performance}
+The main cahracteristics are of a polarimeter are its effective area and the modulation factor.
+\subsection{Effective area and modulation factor}
+In order to determine the modulation factor, we perform simulations for a source that is 100\% polarized. Then, we turn the pointing of the instrument on the sky in small steps so that we can build up the modulation curve. From this curve, the total modulation of the signal can be calcualted as $\frac{T-B}{T + B}$, where $T$ is the maximum of the curve and $B$ is the minimum. Curves for effective area and modulation are shown in figure~\ref{fig:aeff}.
    \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{mcr3b.eps}
-   \end{tabular}
+   \includegraphics[height=5cm]{aeff.pdf}
    \end{center}
-   \caption[example] 
-%>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:example} 
-Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
-   \end{figure} 
+   \caption
+   { \label{fig:aeff} \emph{panel a}: Effective area. CCD~1 detects the polarized signal, CCD~0 the zeroth order. Because CCD 1 observed the signal of the multi-layer mirror, the effective area is much lower than in the CCD~0. \emph{panel b:}: modulation factor.
+}
+   \end{figure}
 
-\section{MULTIMEDIA FIGURES - VIDEO AND AUDIO FILES}
+\subsection{How does an observation look?}
+Since we have only a single polarimatery channel, we have to rotate the instrument on the sky to cover enough range in rotation angles to sample all possible polarization directions. We show simulations with the spectrum and flux of Mk 421 assuming the source is fully polarized. In reality, the polarization fraction is going to be $<1$ and might depend on energy. Of course, we can simulate those scenarios, too, but the point here is to show how the data works in principle, so we pick the easiest scenario.
 
-Video and audio files can be included for publication. See Tab.~\ref{tab:Multimedia-Specifications} for the specifications for the mulitimedia files. Use a screenshot or another .jpg illustration for placement in the text. Use the file name to begin the caption. The text of the caption must end with the text ``http://dx.doi.org/doi.number.goes.here'' which tells the SPIE editor where to insert the hyperlink in the digital version of the manuscript. 
+We simulate two observations with different polarization angles on the sky, which are chosen such that the first angle gives the maximal signal and the second one the minimal signal on the polarization channel. In a real observation, that angle is not known a-priory and the instrument needs to be rotated continuously or observe at at least three angels to be able to uniquely derive the polarization fration and angle from the polarization channels alone. Using the zeoths order as well, observations at two angles are sufficient.
 
-Here is a sample illustration and caption for a multimedia file:
+\section{TRADES}
+\label{sect:trades}
+
+\subsection{Bending gratings}
+The grating efficiency of CAT gratings changes with the blaze angle. If the blaze angle is small, i.e.\ the rays hit the grating parallel to the surface normal, then many rays will pass ``straight through'' to the zeroth order. Higher blaze angles favour higher orders. PiSox is designed for the blaze angle of 0.8 degree to maximise the number of photons that are diffracted into the first order where they will hit the multi-layer mirror at the blaze peak. We position the gratings such that a ray hitting the grating center has a blaze angle of 0.8 degrees. Since the gratings are located in a converging beam the blaze angle for rays hitting a flat grating near the edges is different from the nominal blaze angle. Fewer photons are diffracted into the first order and the effective area is reduced.
+
+This can be corrected by bending the gratings. If the grating surface follows a cylinder with a radius of curvature that matches the distance of the grating from the focal point, that effect can be almost entirely be compensated (Figure~\ref{fig:curvature}. The axis of that cylinder is parallel to the cross-dispersion direction. In other words, the grating is curved along the long side. On the other hand, bending almost every grating with a different radius of curvature increases the complexity and thus cost and schedule risk dramatically. Here, we study four different scenarios:
+\begin{itemize}
+    \item Gratings are flat.
+    \item All gratings are bend with the same radius which is chosen to be close to the average distance beween grating and focal point.
+    \item We use two different radii of curvature for the upper and lower part of the grating staircase.
+    \item Each grating is curved individually.
+\end{itemize}
 
    \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} 
-   \includegraphics[height=5cm]{MultimediaFigure.jpg}
-	\end{tabular}
-	\end{center}
-   \caption[example] 
-   { \label{fig:video-example} 
-A label of “Video/Audio 1, 2, …” should appear at the beginning of the caption to indicate to which multimedia file it is linked . Include this text at the end of the caption: \url{http://dx.doi.org/doi.number.goes.here}}
-   \end{figure} 
-   
-   \begin{table}[ht]
-\caption{Information on video and audio files that must accompany a manuscript submission.} 
-\label{tab:Multimedia-Specifications}
-\begin{center}       
-\begin{tabular}{|l|l|l|}
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Item & Video & Audio  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  File name & Video1, video2... & Audio1, audio2...   \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Number of files & 0-10 & 0-10  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Size of each file & 5 MB & 5 MB  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  File types accepted & .mpeg, .mov (Quicktime), .wmv (Windows Media Player) & .wav, .mp3  \\
-\hline 
+   \includegraphics[height=5cm]{curvature.pdf}
+   \end{center}
+   \caption
+   { \label{fig:curvature}Distribution of blaze angles (angle between incoming ray and local normal to the grating surface) for different radii of bend CAT gratings.
+}
+   \end{figure}
+
+\begin{table}
+  \caption{effective area in the imaging and polarimatery channel for a representative energy of 0.277 keV}
+  \label{tab:curvature}
+\begin{tabular}{ccc}
+scenario & imaging & polarimetry \\
+ & $\mathrm{cm^{2}}$ & $\mathrm{cm^{2}}$ \\
+flat gratings & 5.43 & 0.145 \\
+radius 900 mm & 4.99 & 0.210 \\
+radius   805 /  1005 mm & 4.99 & 0.214 \\
+individual radii & 4.97 & 0.213 \\
 \end{tabular}
-\end{center}
 \end{table}
+Table~\ref{tab:curvature} shows simulated effective areas at a representative energy for all four scenarios.
+Flat gratings have the best imaging performance, but severely reduce the effective area of the more important polarimetry channel. There is little performace difference between the different bending options studied here, so we conclude that the simplest option (all gratings have the same curvature) should be the baseline design for our instrument.
 
-\appendix    %>>>> this command starts appendixes
+\subsection{Grating dimensions}
+We use a baseline design with rectangular CAT gratings with edgle lengths of 30 mm and 10 mm, where the long edge is parallel to the dispersion direction. In this trade, we test the choice of 10 mm width for the corss-dispersion direction. CAT gratings can be manufactured in larger sizes, but the ideal surface on which the gratings need to be placed is saddle-shaped. On the other hand, the design of the gratings requires the grating normal to be roughly perpendicular to the incoming rays. If the angle between ray and grating becomes large, then the support structures that hold the grating bars in place, in particular to so-called L2 support structure that is 0.5~mm deep, would cast large shadows and thus reduce the effective area. The grating membranes are fixed to the metal grating holder, which in turn is mounted to a larger mechanical structure. All these block some fraction of the area and thus reduce the number of rays that make it through to the detector.
 
-\section{MISCELLANEOUS FORMATTING DETAILS}
-\label{sec:misc}
+So, there are two competing effects: On the one hand, larger gratings reduce the number of and thus area lost to these mounting structures; on the other hand, we have the constrained that the CAT grating normals are close to the direction of the incoming rays. Thus, the larger the grating, the more do the regions on the edges deviate from the surface on which the diffraction should happen. Instead, some rays hit the grating where it is located "above" the theoretical surface, and some "below". In the the first case, photons are diffracted too far, on the latter to little. Both can cause photons to arrive at the ML mirror at a position that does not match the Bragg peak for their wavelength.
 
-It is often useful to refer back (or forward) to other sections in the article.  Such references are made by section number.  When a section reference starts a sentence, Section is spelled out; otherwise use its abbreviation, for example, ``In Sec.~2 we showed...'' or ``Section~2.1 contained a description...''.  References to figures, tables, and theorems are handled the same way.
+Figure~\ref{fig:width} shows the effective area in simulations with different CAT grating sizes. For grating holders with wide frames the ideal width is between 5 and 10 mm. Since the total effective area plateaus in that range, we can see that 10 mm wide gratings are a good choice for the design baseline. Narrower gratings can achieve te same effective area, but at a larger cost and complexity. 
+\begin{figure} [ht]
+  \begin{center}
+    \includegraphics[height=5cm]{catdimensions.pdf}
+  \end{center}
+  \caption
+      { \label{fig:width}Effective area for an instrument filled with CAT gratings of different dimensions. In all simulations, th CAT gratings are 30 mm long in dispersion direction, but the width of the grating in cross-dispersion direction differs. When using larger gratings, there is less obscuration by frames and grating holders, but gratings deviate more from the ideal surface. The figure shows that gratings with dimensions of $30\times10\;\mathrm{mm}^2$ perform best.
+}
+\end{figure}
 
+\section{ALIGNMENT AND ERROR BUDGET}
+\label{sect:align}
+When the physical hardware for a mission is put together, nothing is perfect. Parts and pieces will always differ slightly in form, shape, and position from the locations assigned to them in the abstract design model. Ray-tracing is one useful method to study how much such misalignments will impact the performance of the instrument and thus to develop a table of alignment requirements. The looser the requirement can be, the cheaper and faster the process is. On the other hand, if the ray-tracing shows that certain elements need to be positioned very precisely, specific alignment procedures and tests might have to be developed.
+
+For each alignment parameter, we study six degrees of freedom (three translantions and three roations). In practice, misalignments happen in all six degrees of freedom for all parts of the instrument at the same time. However, computational limitations prohibit us from exhaustively exploring the full parameter space. Instead, as a first phase, we treat PiSoX as a hirachical collection of many elements (mirror shells, mirror module, CAT gratings, CAT grating assembly, all of which combine into the optics module etc.). We perform simulations for about a dozen elements and for each parameter we typically run simulations for 10-20 values. The full parameter space would thus require $20^{6*12}=5\times 10^{93}$ simulations. Instead, as a first step, we set up a perfectly aligned instrument and then vary one parameter for one element or one group of elements (e.g. the "x" position of all gratings) at a time. Note that even a perfectly aligend instrument has some limitations that are inharent in the design, such as optical abberations. We step through diffferent values for each parameter, keeping all other alignments perfect, and run a simulations with 100,000 photons for each step. We inspect the results from simulations and select a value for the accpetable misalignment in each degree of freedom, e.g. the value where the effective area of the channel degrades by no more than 10\%. Selecting the exact value is a trade-off with engeneering concerns. In some degrees of freedom, the alignment may be easily reached by machining tolerances and thus we can chose a number that causes only a negligible degradation of performance, while in other cases, reaching a certain alignment might be very costly and thus we want to set the requirements for this parameters as loosely as possible.
+
+In many cases, the effects of different misalignments will just linearly add up, in others they may cancel each other out to some degree or combine multiplicatively. In future work step, we will investigate misalignments for all parameters simulataneously, but instead of exhaustivly covering the entire parameter space, we perform simualtions only for the table of aligment requirements developed in Step 1.
+
+For the purpose of developing the error budget, there are other design parameters that are not technically related to mechnical aligment, but impact the performce in a similar way and can be analyzed with the same ray-trace setup. One example is the pointing jitter, which describes how uncertainties in the instrument pointing on the sky degrade the instrument performance. If the pointing direction on the sky jitters with time, photons will not always arrive on-axis. This is somewhat similar to a misaligned optics module.
 
 \acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS}       
 Support for this work was provided in part through NASA grant NNX17AG43G and Smithsonian Astrophysical Observatory (SAO)
