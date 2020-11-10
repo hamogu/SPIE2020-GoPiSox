@@ -286,17 +286,29 @@ influence of the particle background. Astrophysical background stems
 from the Cosmic X-ray Background, composed of a soft, thermal Galactic
 foreground component and power-law component to account for unresolved
 AGN. Spectral shape and flux are taken from an analysis of Abell
-1795\cite{2009PASJ...61.1117B}.  We simulate this as a disk of 1
-degree radius (limited by the field-of-view of the thermal
+1795\cite{2009PASJ...61.1117B}.  We simulate this as a disk of
+1~degree radius (limited by the field-of-view of the thermal
 pre-collimators) to determine how diffuse sky background influences
-the count rate in the polarization channel. Since the signal there is
-dispersed source count rates can be very low, so background can
+the count rate in the polarization channel. Since
+dispersed source count rates can be very low, background can
 potentially become important. On the other hand, the multi-layer
-mirror will only reflect photons coming in with a very specific
+mirror will only reflect photons coming with a very specific
 combination of angle and energy, reducing the background
 significantly.
 
-
+For a 100 ks observation, we predict 0.2~cts in the polarimetry
+channel when extracting the chip area that contains the signal of an
+on-axis point source. This is an upper limit, because it does not
+yet consider energy filtering using the intrisic CCD resolution, which
+may reduce the background rate by aother factor of two or so. The
+simulation predicts of order 100 counts that spatially overlap with
+the zeroth order of an on-axis point source, where the exact number
+scales with the size of the extraction region. The difference in flux
+between imaging and polarimetry channel is $10^4$, while the effective
+area differs only by one order of magnitude. From this, we can
+conclude that the ML mirror suppresses the background by about $10^3$.
+At a flux of $2\frac{\mathrm{ct}}{\mathrm{Ms}}$, we can safely assume that
+diffuse X-ray emissions is negligible.
 
 \section{TRADES}
 \label{sect:trades}
@@ -305,18 +317,17 @@ significantly.
 \label{sect:bend}
 The grating efficiency of CAT gratings changes with the blaze
 angle. If the blaze angle is small, i.e.\ the rays hit the grating
-parallel to the surface normal, then many rays will pass ``straight
-through'' to the zeroth order. Higher blaze angles favour higher
-orders. PiSox is designed for the blaze angle of 0.8 degree to
-maximise the number of photons that are diffracted into the first
-order where they will hit the multi-layer mirror at the blaze peak. We
-position the gratings such that a ray hitting the grating center has a
-blaze angle of 0.8 degrees. Since the gratings are located in a
-converging beam the blaze angle for rays hitting a flat grating near
-the edges is different from the nominal blaze angle. Fewer photons are
-diffracted into the first order and the effective area is reduced.
-
-This can be corrected by bending the gratings. If the grating surface
+parallel to the surface normal, then many rays will end up in the
+zeroth order. Higher blaze angles favour higher orders. PiSox is
+designed for a blaze angle of 0.8~degree to maximise the number of
+photons that are diffracted into the first order where they will hit
+the multi-layer mirror at the blaze peak. We position the gratings
+such that a ray hitting the grating center the correct blaze
+angle. However, the gratings are located in a converging beam and thus the blaze
+angle for rays hitting a flat grating near the edges is different from
+the nominal blaze angle. Fewer photons are diffracted into the first
+order and the effective area is reduced.
+If the grating surface
 follows a cylinder with a radius of curvature that matches the
 distance of the grating from the focal point, that effect can be
 almost entirely be compensated (Figure~\ref{fig:curvature}. The axis
@@ -365,16 +376,16 @@ conclude that the simplest option (all gratings have the same
 curvature) should be the baseline design for our instrument.
 
 \subsection{Grating dimensions}
-We use a baseline design with rectangular CAT gratings with edgle
-lengths of 30 mm and 10 mm, where the long edge is parallel to the
-dispersion direction. In this trade, we test the choice of 10 mm width
-for the corss-dispersion direction. CAT gratings can be manufactured
+We use a baseline design with rectangular CAT gratings with edge
+lengths of 30~mm and 10~mm, where the long edge is parallel to the
+dispersion direction. In this trade, we test the choice of 10~mm width
+for the cross-dispersion direction. CAT gratings can be manufactured
 in larger sizes, but the ideal surface on which the gratings need to
 be placed is saddle-shaped. On the other hand, the design of the
 gratings requires the grating normal to be roughly perpendicular to
 the incoming rays. If the angle between ray and grating becomes large,
 then the support structures that hold the grating bars in place, in
-particular to so-called L2 support structure that is 0.5~mm deep,
+particular the L2 support,
 would cast large shadows and thus reduce the effective area. The
 grating membranes are fixed to the metal grating holder, which in turn
 is mounted to a larger mechanical structure. All these block some
@@ -383,20 +394,20 @@ through to the detector.
 
 So, there are two competing effects: On the one hand, larger gratings
 reduce the number of and thus area lost to these mounting structures;
-on the other hand, we have the constrained that the CAT grating
-normals are close to the direction of the incoming rays. Thus, the
-larger the grating, the more do the regions on the edges deviate from
+on the other hand, CAT grating
+normals have to be close to the direction of the incoming rays. Thus, the
+larger the grating, the more the regions on the edges deviate from
 the surface on which the diffraction should happen. Instead, some rays
 hit the grating where it is located "above" the theoretical surface,
 and some "below". In the the first case, photons are diffracted too
-far, on the latter to little. Both can cause photons to arrive at the
+far, in the latter to little. Both can cause photons to arrive at the
 ML mirror at a position that does not match the Bragg peak for their
 wavelength.
 
 Figure~\ref{fig:width} shows the effective area in simulations with
 different CAT grating sizes. For grating holders with wide frames the
-ideal width is between 5 and 10 mm. Since the total effective area
-plateaus in that range, we can see that 10 mm wide gratings are a good
+ideal width is between 5 and 10~mm. Since the total effective area
+plateaus in that range, we can see that 10~mm wide gratings are a good
 choice for the design baseline. Narrower gratings can achieve te same
 effective area, but at a larger cost and complexity.
 \begin{figure} [ht]
@@ -428,7 +439,7 @@ positioned very precisely, specific alignment procedures and tests
 might have to be developed.
 
 For each alignment parameter, we study six degrees of freedom (three
-translantions and three roations). In practice, misalignments happen
+translantions and three rotations). In practice, misalignments happen
 in all six degrees of freedom for all parts of the instrument at the
 same time. However, computational limitations prohibit us from
 exhaustively exploring the full parameter space. Instead, as a first
@@ -439,30 +450,25 @@ for about a dozen elements and for each parameter we typically run
 simulations for 10-20 values. The full parameter space would thus
 require $20^{6*12}=5\times 10^{93}$ simulations. Instead, as a first
 step, we set up a perfectly aligned instrument and then vary one
-parameter for one element or one group of elements (e.g. the "x"
+parameter for one element or one group of elements (e.g. the $x$
 position of all gratings) at a time. Note that even a perfectly
-aligend instrument has some limitations that are inharent in the
+aligend instrument has some limitations that are inherant in the
 design, such as optical abberations. We step through diffferent values
 for each parameter, keeping all other alignments perfect, and run a
 simulations with 100,000 photons for each step. We inspect the results
 from simulations and select a value for the accpetable misalignment in
-each degree of freedom, e.g. the value where the effective area of the
+each degree of freedom, e.g.\ the value where the effective area of the
 channel degrades by no more than 10\%. Selecting the exact value is a
 trade-off with engeneering concerns. In some degrees of freedom, the
 alignment may be easily reached by machining tolerances and thus we
 can chose a number that causes only a negligible degradation of
 performance, while in other cases, reaching a certain alignment might
-be very costly and thus we want to set the requirements for this
+be very costly and thus we want to set the requirements for these
 parameters as loosely as possible.
 
-In many cases, the effects of different misalignments will just
-linearly add up, in others they may cancel each other out to some
-degree or combine multiplicatively. In future work step, we will
-investigate misalignments for all parameters simulataneously, but
-instead of exhaustivly covering the entire parameter space, we perform
-simualtions only for the table of aligment requirements developed in
-Step 1.
-
+The effects of different misalignments will add up in some cases. In others they may cancel each other out to some
+degree or combine multiplicatively. In future work, we will
+investigate misalignments for all parameters simulataneously.
 For the purpose of developing the error budget, there are other design
 parameters that are not technically related to mechnical aligment, but
 impact the performce in a similar way and can be analyzed with the
@@ -473,22 +479,20 @@ sky jitters with time, photons will not always arrive on-axis. This is
 somewhat similar to a misaligned optics module.
 
 In this section, we run simulations varying one degree of freedom at a
-time and present results in three different kinds of plots: First,
-there are parameters that are not mechanical misalignments, such as
-the pointing jitter. Figures showing the results of these simulations
-have a blue background. Simulations for mechanical misalignments come
-in two flavors. Either an entire set of objects is moved
-determinsitically (e.g. all gratings in the grating assembly are moved
-1 mm to the right) or a number of objects are moved randomly (e.g. all
-gratings in the grating assembly are moved along the $x$-axis, but for
-each grating a new number is drawn from a Gaussian distribution with
+time. Parameters that are not mechanical misalignments, such as the
+pointing jitter, are shown in plots with a blue background in the
+coming figures. Simulations for mechanical misalignments come in two
+flavors. Either an entire set of objects is moved determinsitically
+(e.g. all gratings in the grating assembly are moved 1 mm to the
+right) or a number of objects are moved randomly (e.g.\ all gratings in
+the grating assembly are moved along the $x$-axis, but for each
+grating a new number is drawn from a Gaussian distribution with
 $\sigma=1$ mm). The first case is shown with a gray background, the
 latter case is shown with a pink background. Results for all mechnical
 tolerancing are shown as sets of six plots. The upper row presents
 results from translations along the $x$, $y$, and $z$-axis, the bottom
-row rotations. The center of the rotation is typically the centor of
-an element. If other centers are chosen, this is discussed in the
-text. The coordinate system for the instrument places the optical axis
+row rotations. The center of the rotation is typically the center of
+an element. The coordinate system for the instrument places the optical axis
 along the $z$-axis with photons coming in from $z=+\infty$. The origin
 of the coordinate system is at the nominal focal point of the mirror
 system. The dispersion direction of the gratings is along the positive
@@ -513,7 +517,7 @@ jitter represents uncertainty in the pointing, which can come from
 different sources, such as limited resolution of the star trackers,
 motion of the pointing within the time period of reading out the star
 trackers or integetration time of the zero-order image (if used to
-determine the target coordinates) or the spacecraft not correcting a
+determine the target coordinates), or the spacecraft not correcting a
 pointing drift fast enough.
 
 The effective area $A_{\mathrm{eff}}$ drops with increasing jitter,
@@ -553,7 +557,7 @@ wavelength are more dispersed, they are more effected.
 }
 \end{figure}
 Figure~\ref{fig:CAT_global} shows simulations that move the CAT
-grating modules as a whole, i.e.\ translation in $z$ means that all
+grating module as a whole, i.e.\ translation in $z$ means that all
 gratings of both sectors are moved up or down together. This
 particular case changes the distance between the gratings and the
 focal plane and thus photons will hit the ML mirror on a different
@@ -563,7 +567,7 @@ $A_{\mathrm{eff}}$. The layout is insentitive to translations in $y$
 (along the dispersion direction). This is the long direction of the
 CAT gratings and CAT gratings are tilted only ever so slightly, so
 that the point of intersection is essentially
-constant. $A_{\mathrm{eff}}$ only begins to drop, when gratings are
+constant. $A_{\mathrm{eff}}$ only begins to drop when gratings
 moved so far that some fraction of the beam no longer hit a grating. A
 shift along $x$ is a shift along the stair-stepped direction. Shifts
 along $x$ reduce $A_{\mathrm{eff}}$ for the same reason that the
@@ -590,8 +594,7 @@ the gratings, so the effect is similar to a translation in $z$.
 
 Figure\ref{fig:CAT_individual} presents simulations where individual
 CAT gratings are moved with respect to their nominal position on the
-CAT gratings assembly, i.e. where the grating holders are not
-positioned correctly. All translations allow $1\sigma$ errors of a few
+CAT gratings assemblyi. All translations allow $1\sigma$ errors of a few
 mm, which is much larger than the size of the holder the gratings are
 placed in. This is a trivial constraint. Similarly, only rotations
 around $x$ (the short axis of the gratings) is tighter than 2
@@ -619,7 +622,7 @@ orders of magnitude better than the PiSoX requirement.
 }
 \end{figure}
 
-The ML is the most critical part of the alignment because photons have
+The ML mirror is the most critical part of the alignment because photons have
 to hit the multilayer at the position of the Bragg peak. Because of
 this, shifts along the $y$ direction (the direction in which the
 multilayer is graded) are most sensitive
@@ -627,7 +630,7 @@ multilayer is graded) are most sensitive
 10 micron. However, this is for a source at nominal position. Moving
 the source to a slightly off-axis position also changes where photons
 interact with the ML mirror. Thus, in practice, this alignment does
-not have to be performed to the 10 micron level for a single-channel
+not have to be performed to the 10~micron level for a single-channel
 instrument. Instead sources can just be observed slightly off-axis to
 compensate for any alignment error. This requires calibrating the
 alignment in space by observing a source at different positions, until
@@ -649,8 +652,7 @@ point of intersection with the mirror surface does not change much and
 thus the photons still interact with the mirror very close to position
 of the Bragg peak. On the other hand, rotations around the other two
 axes move the mirror by a significant amount. That means that the
-photons travel either too far or too little and since the photons are
-dispersed, they will also travel to far or not far enough in $x$
+photons travel either too far or too little in $x$
 direction, which causes them to miss the position of the Bragg peak
 and consequently reduces $A_{\mathrm{eff}}$ significantly.
 
@@ -674,7 +676,7 @@ The exact position of the detectors is not important as long as the
 signal still hits the detectors. With increasing misalignment, the
 spectral resolution of the polarimetry channel will degrade slightly,
 but the low signal in this channel will prevent an analysis of
-high-resolution spectroscopy anyway. Also, background also increases,
+high-resolution spectroscopy anyway. Background also increases
 when the extraction region size needs to be increased, but again, this
 effect is negligible for any misalignment that can reasonably be
 expected in the focal plane.
@@ -689,7 +691,7 @@ essentially as its own instrument with separate CAT gratings, ML
 mirrors, and detectors. We show effective area and modulation factor
 based on this design.
 
-Gratings need to be bend to mathc the blaze angle in a converging
+Gratings need to be bend to match the blaze angle in a converging
 beam. We study different bending stategies and find that bending is
 required, but the performacne shows only little sensitivity to the
 exact value of the radius, so that only one type of grating holder
@@ -699,12 +701,13 @@ diffracted rays hit the ML mirror at the position of the Bragg peak
 puts limits on the size of the CAT gratings. We find that a width of
 10~mm optimizes performance.
 
-Finally, we discuss alignment tolerances for all component. In most
+Finally, we discuss alignment tolerances for all components. In most
 degrees of freedom the requirements are so loose that they are well
 below machining tolerances. One exception to that is the ML mirror,
 which has to be positioned with in 10~$\mu$m in dispersion direction.
 
-\acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS} Support
+\acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS}
+Support
 for this work was provided in part through NASA grant NNX17AG43G and
 Smithsonian Astrophysical Observatory (SAO) contract SV3-73016 to MIT
 for support of the {\em Chandra} X-Ray Center (CXC), which is operated
