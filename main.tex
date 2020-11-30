@@ -1,5 +1,3 @@
-% overview at end of intro
-
 \documentclass[]{spie}  %>>> use for US letter paper
 %\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
 %\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
@@ -13,7 +11,8 @@
 \title{Ray-tracing a small orbital mission for soft-X-ray polarimetry}
 
 \author[a]{Hans Moritz G\"unther}
-\author[a]{Hermann L. Marshall}
+\author[a]{Herman L. Marshall}
+\author[a]{Alan Garner}
 \affil[a]{MIT Kavli Institute for Astrophysics and Space Research, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
 
 \authorinfo{Send correspondence to H.M.G. (E-mail: hgunther@mit.edu)}
@@ -34,12 +33,12 @@ present ray-tracing results for a small orbital mission that could be
 launched within NASA's Pioneer or SmallSat cost-cap to provide X-ray
 polarimetry below 2~keV. The design is based on the use of
 laterally-graded multi-layer (ML) mirrors, a concept that we have
-developed theoretically for the REDSoX Polarimeter\cite{redsox} and
-that has most components verified in the laboratory.  In this
+developed theoretically for the REDSoX Polarimeter\cite{redsox},
+for which most components have been verified in the laboratory.  In this
 contribution, we describe a single channel orbital mission based on
 the same idea, but modified to the unique cost and space
 requirements. All results scale up easily to two or more polarimetry
-channels. This would simply increase the effective area and reduce the
+channels. Scaling up would simply increase the effective area and reduce the
 need to rotate the instrument to measure the different polarization
 directions. In particular, we use the ray-traces to define the maximum
 size of the dispersion gratings and to determine an alignment budget.
@@ -64,14 +63,16 @@ polarimetry. Yet, a range of open science questions for several
 classes of astrophysical sources can only be answered with soft X-ray
 polarimetry.
 
+In this paper we present ray-trace studies for a a small orbital mission for soft x-ray polarimetry, which is described in section~\ref{sect:mission}. In section~\ref{sect:raytrace} we describe the setup of our ray-trace simulations. From those, we can predict the performance, most importantly effective area and modulation factor (section~\ref{sect:performance}, perform trade-studies on shape and the size of the gratings used in the design (section~\ref{sect:trades}, and evaluate the influence of alignment errors and other non-ideal effects (section~\ref{sect:align}). We end with a short summary in section~\ref{sect:summary}.
 
 \section{MISSION OVERVIEW}
+\label{sect:mission}
 Over the years, we have developed and refined a design for a soft
 X-ray polarimeter, called ``REDSoX'', which is based on reflection off
 a laterally-graded multi-layer (ML) mirror.  Details of the REDSoX
 design are discussed in Ref.~\citenum{redsox}, more details of
 ray-trace calculations are presented in Ref.~\citenum{redsoxtrace}.
-In short, X-rays are focussed into a converging beam using a
+In short, X-rays are focused into a converging beam using a
 mirror. Beyond the mirror, the photons encounter critical-angle
 transmission (CAT)
 gratings\cite{Heilmann:11,doi:10.1117/12.2188525,10.1117/12.2314180,10.1117/12.2529354}. A
@@ -82,15 +83,16 @@ resolution of the detector. Most photons, however, are diffracted. By
 selecting the blaze angle (the angle between the grating normal and
 the direction of the incoming photons), we can optimize the fraction
 of photons diffracted into the first order. Photons of longer
-wavelength are diffracted further and thus hit the focal plane further
-away from the direct image than photons with a shorter wavelength. In
-the focal plane, a multi-layer mirror is located. The thickness of the
+wavelengths are diffracted farther and thus hit the focal plane farther
+away from the direct image than photons with shorter wavelengths.
+A multi-layer mirror is located in
+the focal plane. The thickness of the
 layers varies with position (``laterally graded'') and is chosen such
 that every photon interacts with the mirror at a position where the
 mirror spacing matches Bragg condition for photons of that
 wavelength\cite{redsox,redsoxtrace}. The mirror is tilted by about 45
 degrees with respect to the incoming photons, and thus only photons
-with one polarization direction are reflected (``Brewster angel''),
+with one polarization direction are reflected (``Brewster angle''),
 while photons with a perpendicular polarization are absorbed. A CCD
 detects the reflected photons. The requirement to match the photon
 position to the Bragg peak on the multi-layer mirror sets a limit to
@@ -106,14 +108,15 @@ two or three channels, each with its own sub-aperture, multi-layer
 mirror and detector, that are rotated with respect to each other.
 
 REDSoX is designed as a sounding rocket payload with very short
-exposure times, but loose mass and volume requirements. In this paper,
+exposure times, but relaxed mass and volume requirements. In this paper,
 we present ray-traces for a variant of the REDSoX design optimized for
 a small orbital mission, e.g.\ in NASA's Astrophysics Pioneer or
 SmallSat program. Compared to REDSoX, we need to shorten the focal
 length to fit the mission into the envelope of a secondary payload,
-such as an ESPA grande ring. This reduces the area covered by the
-mirrors; on the other hand, we can integrate for months in an orbital
-missions while a sounding rocket gives only a few minutes observing
+such as when mounted to an ESPA grande ring.
+While the mirror area may be smaller, we can integrate for
+days to months in an orbital
+mission while a sounding rocket gives only a few minutes of observing
 time.
 
 Most of the trades and studies done for REDSoX\cite{redsoxtrace} are
@@ -129,9 +132,9 @@ times.
 In this work, we consider a system with a focal length of just 1.25~m
 and a single polarimetry channel. An overview of the design is shown
 in Figure~\ref{fig:3d}. This matches our submitted Astrophysics
-Pioneer proposal (dubbed ``PiSoX'' for Pionieer SOft X-ray
-polarimater) and represents the simplest possible instrument to
-measure soft X-ray polarimetry. It is easy to extent this design by
+Pioneer proposal (dubbed ``PiSoX'' for Pioneer Soft X-ray
+polarimeter) and represents the simplest possible instrument to
+measure soft X-ray polarization. It is easy to extend this design by
 adding another polarimetry channel for redundancy, increased effective
 area, and the opportunity to measure fast changes in the polarization
 (since two polarization directions are observed simultaneously,
@@ -164,18 +167,19 @@ the instrument ``PiSoX'' for the remainder of this article.
 \end{figure}
 
 Figure~\ref{fig:3d} shows a ray-trace through our one-channel
-system. All rays i the figure have the same energy (0.3~keV). Because
+system. All rays in the figure have the same energy (0.3~keV). Because
 the mirrors deliver a converging beam, rays have different angles with
 respect to the ML mirror. Because of that, they require a slightly
 different period of the layers of the ML mirror to match the Bragg
-peak, and consequently, they have to be diffracted to a differnet
+peak, and consequently, they have to be diffracted to a different
 position on the ML mirror. This is the origin of the stair-stepped
-arreangmment of the CAT gratings\cite{redsox,redsoxtrace}. In panel
+arrangement of the CAT gratings\cite{redsox,redsoxtrace}. In panel
 (b) of the figure, it can be seen that the rays fall into two groups
 depending on if they pass through the upper or lower sector of
 gratings.
 
 \section{SETUP FOR RAY-TRACES}
+\label{sect:raytrace}
 We perform a geometric ray-trace with the MARXS code, which follows
 individual rays through the system from the entrance aperture to the
 detector. Simulations are performed with MARXS
@@ -199,7 +203,7 @@ intersect the plane, their directions are modified as if they pass a
 perfect lens. In the next step, additional scatter in the plane of
 reflection is added. For each ray, the scattering angle is drawn from
 a Gaussian distribution, where the width of the distribution is tuned
-to achieve a PSF size that matches the PSFs measured or exepcted for
+to achieve a PSF size that matches the PSFs measured or expected for
 the type of mirror used. We use 12 arcsec for the $\sigma$ of the
 Gaussian.
 
@@ -211,7 +215,7 @@ simulations and verified in the laboratory; a table of efficiencies is
 an input to our simulations. The high aspect-ratio grating bars are
 4~$\mu$m deep and supported by an L1 support structure running
 perpendicular to the grating bars themselves and the entire membrane
-(bars and L1) is mechanically stablized by a hexagonal L2 support
+(bars and L1) is mechanically stabilized by a hexagonal L2 support
 structure, which is 0.5~mm deep. Absorption and diffraction of photons
 by the L1 and L2 support structures is included in our
 simulations. The grating membrane is surrounded by a 1.5~mm wide frame
@@ -225,14 +229,14 @@ proto-typed\cite{10.1117/12.2314902,10.1117/12.2529607}.
 Laterally graded multi-layer (ML) mirrors can be made from a variety
 of materials. We use a Cr/Sc mirror, because this combination of
 material promises a good reflectivity in the bandpass of interest; ML
-mirror refelctivities have been verified in the
+mirror reflectivities have been verified in the
 laboratory\cite{10.1117/12.2188452}. The detectors will be CCD ID-94
 detectors produced by Lincoln Labs, we use the quantum efficiencies
-measure for Suzaku CCDs\cite{2007PASJ...59S..23K} for our ray-traces.
+measured for Suzaku CCDs\cite{2007PASJ...59S..23K} for our ray-traces.
 
 \section{PERFORMANCE}
 \label{sect:performance}
-The main characteristics are of a polarimeter are its effective area and the modulation factor.
+The main characteristics of a polarimeter are its effective area and the modulation factor.
 
 \subsection{Effective area and modulation factor}
 In order to determine the modulation factor, we perform simulations
@@ -241,7 +245,7 @@ the instrument on the sky in small steps so that we can build up the
 modulation curve. From this curve, the total modulation of the signal
 can be calculated as $\frac{T-B}{T + B}$, where $T$ is the maximum of
 the curve and $B$ is the minimum. The energy dependence for effective
-area and modulation is shown in figure~\ref{fig:aeff}.
+area and modulation are shown in figure~\ref{fig:aeff}.
 \begin{figure} [ht]
   \begin{center}
     \includegraphics[height=5cm]{aeff.pdf}
@@ -255,7 +259,7 @@ area and modulation is shown in figure~\ref{fig:aeff}.
 \end{figure}
 
 \subsection{How does an observation look?}
-Since PiSoX has only a single polarimatery channel, we have to rotate
+Since PiSoX has only a single polarimetry channel, we have to rotate
 the instrument on the sky to cover enough range in rotation angles to
 sample all possible polarization directions. We show simulations with
 the spectrum and flux of Mk 421 assuming the source is fully
@@ -267,25 +271,30 @@ principle, so we pick the easiest scenario.
 We simulate two observations with different polarization angles on the
 sky, which are chosen such that the first angle gives the maximal
 signal and the second one the minimal signal on the polarization
-channel. In a real observation, that angle is not known a-priory and
+channel. In a real observation, that angle is not known {\it a priori} and
 the instrument needs to be rotated continuously or observe at at least
-three angels to be able to uniquely derive the polarization fration
+three angles to be able to uniquely derive the polarization fraction
 and angle from the polarization channels alone. Using the zeroth order
-as well, observations at two angles are sufficient.
+data as well, then observations at two angles are sufficient.
 
 \subsection{Background}
 For faint sources, background limits the signal-to-noise ratio that
 can be achieved with very long observations. There are two main
-components to the background: Partical background and astrophysical
-sources. The particle background is independent of the orientation of
-the spacecraft. The main mechanism to handle this is to look at the
-shape and energy of detected events. For a spectro-polarimeter like
-PiSoX only background events at match the energy of the photons
+components to the background: Particle background and astrophysical
+sources. We assume that the particle background is
+independent of the orientation of
+the spacecraft.
+With CCD detectors, the main mechanism for reducing background
+is to select data using the
+shapes and energies of the detected events. For a
+dispersive spectro-polarimeter like
+PiSoX only background events that match the energy of the photons
 expected at that position on the detector are relevant, reducing the
 influence of the particle background. Astrophysical background stems
 from the Cosmic X-ray Background, composed of a soft, thermal Galactic
 foreground component and power-law component to account for unresolved
-AGN. Spectral shape and flux are taken from an analysis of Abell
+AGN. The spectral shape and flux of the astrophysical
+background are taken from an analysis of Abell
 1795\cite{2009PASJ...61.1117B}.  We simulate this as a disk of
 1~degree radius (limited by the field-of-view of the thermal
 pre-collimators) to determine how diffuse sky background influences
@@ -299,38 +308,51 @@ significantly.
 For a 100 ks observation, we predict 0.2~cts in the polarimetry
 channel when extracting the chip area that contains the signal of an
 on-axis point source. This is an upper limit, because it does not
-yet consider energy filtering using the intrisic CCD resolution, which
-may reduce the background rate by aother factor of two or so. The
+yet consider energy filtering using the intrinsic CCD resolution, which
+may reduce the background rate by another factor of two or so. The
 simulation predicts of order 100 counts that spatially overlap with
 the zeroth order of an on-axis point source, where the exact number
 scales with the size of the extraction region. The difference in flux
 between imaging and polarimetry channel is $10^4$, while the effective
 area differs only by one order of magnitude. From this, we can
-conclude that the ML mirror suppresses the background by about $10^3$.
+conclude that the ML mirror suppresses the background by about 
+a factor of $10^3$.
 At a flux of $2\frac{\mathrm{ct}}{\mathrm{Ms}}$, we can safely assume that
-diffuse X-ray emissions is negligible.
+diffuse X-ray emissions is negligible, as several thousand
+counts are needed to detect polarizations below 10\%.
 
 \section{TRADES}
 \label{sect:trades}
 
 \subsection{Bending gratings}
 \label{sect:bend}
+
+
+\begin{figure} [ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{explainbending}
+\end{center}
+\caption {\label{fig:explainbending}
+In a converging beam (black rays) the angle between the grating normal and the rays changes with grating position for a flat grating (blue). Bending the grating can compensate for this problem (orange) for gratings that are small compared to the radius. This is true for gratings where the ray through the grating center is normal to the grating (left) and for gratings with a design blaze angle (right).
+}
+\end{figure}
+
 The grating efficiency of CAT gratings changes with the blaze
 angle. If the blaze angle is small, i.e.\ the rays hit the grating
 parallel to the surface normal, then many rays will end up in the
 zeroth order. Higher blaze angles favour higher orders. PiSox is
 designed for a blaze angle of 0.8~degree to maximise the number of
-photons that are diffracted into the first order where they will hit
-the multi-layer mirror at the blaze peak. We position the gratings
-such that a ray hitting the grating center the correct blaze
+photons that are diffracted into the first order, where they will hit
+the multi-layer mirror at the Bragg peak. We position the gratings
+such that a ray hitting the grating center has the correct blaze
 angle. However, the gratings are located in a converging beam and thus the blaze
-angle for rays hitting a flat grating near the edges is different from
-the nominal blaze angle. Fewer photons are diffracted into the first
+angles for rays hitting a flat grating near its edges are different from
+the nominal blaze angle (Figure~\ref{fig:explainbending}. Fewer photons are diffracted into the first
 order and the effective area is reduced.
 If the grating surface
 follows a cylinder with a radius of curvature that matches the
 distance of the grating from the focal point, that effect can be
-almost entirely be compensated (Figure~\ref{fig:curvature}. The axis
+almost entirely be compensated (Figure~\ref{fig:curvature}). The axis
 of that cylinder is parallel to the cross-dispersion direction. In
 other words, the grating is curved along the long side. On the other
 hand, bending almost every grating with a different radius of
@@ -338,7 +360,7 @@ curvature increases the complexity and thus cost and schedule risk
 dramatically. Here, we study four different scenarios:
 \begin{itemize}
     \item Gratings are flat.
-    \item All gratings are bend with the same radius which is chosen to be close to the average distance beween grating and focal point.
+    \item All gratings are bent with the same radius which is chosen to be close to the average distance between the gratings and the focal point.
     \item We use two different radii of curvature for the upper and lower part of the grating staircase.
     \item Each grating is curved individually.
 \end{itemize}
@@ -348,12 +370,12 @@ dramatically. Here, we study four different scenarios:
    \includegraphics[height=5cm]{curvature.pdf}
    \end{center}
    \caption
-   { \label{fig:curvature}Distribution of blaze angles (angle between incoming ray and local normal to the grating surface) for different radii of bend CAT gratings.
+   { \label{fig:curvature}Distribution of blaze angles (angle between incoming ray and local normal to the grating surface) for different radii of bent CAT gratings.
 }
    \end{figure}
 
 \begin{table}
-  \caption{effective area in the imaging and polarimatery channel for a representative energy of 0.277 keV}
+  \caption{Effective area in the imaging and polarimatery channel for a representative energy of 0.277 keV}
   \label{tab:curvature}
 \begin{center}
 \begin{tabular}{c|c|c}
@@ -370,7 +392,7 @@ individual radii & 4.97 & 0.213 \\
 Table~\ref{tab:curvature} shows simulated effective areas at a
 representative energy for all four scenarios.  Flat gratings have the
 best imaging performance, but severely reduce the effective area of
-the more important polarimetry channel. There is little performace
+the more important polarimetry channel. There is little performance
 difference between the different bending options studied here, so we
 conclude that the simplest option (all gratings have the same
 curvature) should be the baseline design for our instrument.
@@ -398,17 +420,18 @@ on the other hand, CAT grating
 normals have to be close to the direction of the incoming rays. Thus, the
 larger the grating, the more the regions on the edges deviate from
 the surface on which the diffraction should happen. Instead, some rays
-hit the grating where it is located "above" the theoretical surface,
-and some "below". In the the first case, photons are diffracted too
-far, in the latter to little. Both can cause photons to arrive at the
-ML mirror at a position that does not match the Bragg peak for their
+hit the grating where it is located ``above'' the theoretical surface,
+and some ``below''. In the the first case, photons are diffracted too
+far, in the latter too little. Both can cause a photon to arrive
+at a position on the
+ML mirror that does not match the Bragg peak for its
 wavelength.
 
 Figure~\ref{fig:width} shows the effective area in simulations with
 different CAT grating sizes. For grating holders with wide frames the
 ideal width is between 5 and 10~mm. Since the total effective area
 plateaus in that range, we can see that 10~mm wide gratings are a good
-choice for the design baseline. Narrower gratings can achieve te same
+choice for the design baseline. Narrower gratings can achieve the same
 effective area, but at a larger cost and complexity.
 \begin{figure} [ht]
   \begin{center}
@@ -416,7 +439,7 @@ effective area, but at a larger cost and complexity.
   \end{center}
   \caption
       { \label{fig:width}Effective area for an instrument filled with
-        CAT gratings of different dimensions. In all simulations, th
+        CAT gratings of different dimensions. In all simulations, the
         CAT gratings are 30 mm long in dispersion direction, but the
         width of the grating in cross-dispersion direction
         differs. When using larger gratings, there is less obscuration
@@ -439,11 +462,11 @@ positioned very precisely, specific alignment procedures and tests
 might have to be developed.
 
 For each alignment parameter, we study six degrees of freedom (three
-translantions and three rotations). In practice, misalignments happen
+translations and three rotations). In practice, misalignments happen
 in all six degrees of freedom for all parts of the instrument at the
 same time. However, computational limitations prohibit us from
 exhaustively exploring the full parameter space. Instead, as a first
-phase, we treat PiSoX as a hirachical collection of many elements
+phase, we treat PiSoX as a hierarchical collection of many elements
 (mirror shells, mirror module, CAT gratings, CAT grating assembly, all
 of which combine into the optics module etc.). We perform simulations
 for about a dozen elements and for each parameter we typically run
@@ -452,14 +475,14 @@ require $20^{6*12}=5\times 10^{93}$ simulations. Instead, as a first
 step, we set up a perfectly aligned instrument and then vary one
 parameter for one element or one group of elements (e.g. the $x$
 position of all gratings) at a time. Note that even a perfectly
-aligend instrument has some limitations that are inherant in the
-design, such as optical abberations. We step through diffferent values
+aligned instrument has some limitations that are inherent in the
+design, such as optical aberrations. We step through different values
 for each parameter, keeping all other alignments perfect, and run a
 simulations with 100,000 photons for each step. We inspect the results
-from simulations and select a value for the accpetable misalignment in
+from simulations and select a value for the acceptable misalignment in
 each degree of freedom, e.g.\ the value where the effective area of the
 channel degrades by no more than 10\%. Selecting the exact value is a
-trade-off with engeneering concerns. In some degrees of freedom, the
+trade-off with engineering concerns. In some degrees of freedom, the
 alignment may be easily reached by machining tolerances and thus we
 can chose a number that causes only a negligible degradation of
 performance, while in other cases, reaching a certain alignment might
@@ -468,10 +491,10 @@ parameters as loosely as possible.
 
 The effects of different misalignments will add up in some cases. In others they may cancel each other out to some
 degree or combine multiplicatively. In future work, we will
-investigate misalignments for all parameters simulataneously.
+investigate misalignments for all parameters simultaneously.
 For the purpose of developing the error budget, there are other design
-parameters that are not technically related to mechnical aligment, but
-impact the performce in a similar way and can be analyzed with the
+parameters that are not technically related to mechanical alignment, but
+impact the performance in a similar way and can be analyzed with the
 same ray-trace setup. One example is the pointing jitter, which
 describes how uncertainties in the instrument pointing on the sky
 degrade the instrument performance. If the pointing direction on the
@@ -482,13 +505,13 @@ In this section, we run simulations varying one degree of freedom at a
 time. Parameters that are not mechanical misalignments, such as the
 pointing jitter, are shown in plots with a blue background in the
 coming figures. Simulations for mechanical misalignments come in two
-flavors. Either an entire set of objects is moved determinsitically
+flavors. Either an entire set of objects is moved deterministicly
 (e.g. all gratings in the grating assembly are moved 1 mm to the
 right) or a number of objects are moved randomly (e.g.\ all gratings in
 the grating assembly are moved along the $x$-axis, but for each
 grating a new number is drawn from a Gaussian distribution with
 $\sigma=1$ mm). The first case is shown with a gray background, the
-latter case is shown with a pink background. Results for all mechnical
+latter case is shown with a light red background. Results for all mechanical
 tolerancing are shown as sets of six plots. The upper row presents
 results from translations along the $x$, $y$, and $z$-axis, the bottom
 row rotations. The center of the rotation is typically the center of
@@ -516,7 +539,7 @@ drawn from a Gaussian with the $\sigma$ given in the figure. This
 jitter represents uncertainty in the pointing, which can come from
 different sources, such as limited resolution of the star trackers,
 motion of the pointing within the time period of reading out the star
-trackers or integetration time of the zero-order image (if used to
+trackers or integration time of the zero-order image (if used to
 determine the target coordinates), or the spacecraft not correcting a
 pointing drift fast enough.
 
@@ -543,8 +566,9 @@ the simulations with the pointing jitter above, the effective area
 drops dramatically when the source moves along the axis of the ML,
 because that means that photons will no longer arrive at the position
 where the spacing of the ML matches the required number given the
-angle and wavelength of the photon. Because photons with a longer
-wavelength are more dispersed, they are more effected.
+angle and wavelength of the photon.
+%Because photons with a longer
+%wavelength are more dispersed, they are more affected.
 
 
 \subsection{CAT gratings}
@@ -563,7 +587,7 @@ particular case changes the distance between the gratings and the
 focal plane and thus photons will hit the ML mirror on a different
 location. Changes of more than a few mm will cause the photons to miss
 the position of the Bragg peak on the ML mirror and thus reduce
-$A_{\mathrm{eff}}$. The layout is insentitive to translations in $y$
+$A_{\mathrm{eff}}$. The layout is insensitive to translations in $y$
 (along the dispersion direction). This is the long direction of the
 CAT gratings and CAT gratings are tilted only ever so slightly, so
 that the point of intersection is essentially
@@ -576,7 +600,7 @@ different angle, they need to be diffracted at a different distance
 from the ML to hit the ML mirror at the Bragg peak.
 
 For the rotation simulations, the origin of the rotation is the point
-where the optical axes intersects the "stair" surface on which the
+where the optical axes intersects the ``stair'' surface on which the
 gratings are positioned. Of all the rotations, only rotations around
 the $y$ direction (the dispersion axis) have limits tighter than a
 degree or so, because rotation around $y$ changes the $z$ position of
@@ -592,18 +616,17 @@ the gratings, so the effect is similar to a translation in $z$.
 }
 \end{figure}
 
-Figure\ref{fig:CAT_individual} presents simulations where individual
+Figure~\ref{fig:CAT_individual} presents simulations where individual
 CAT gratings are moved with respect to their nominal position on the
-CAT gratings assemblyi. All translations allow $1\sigma$ errors of a few
+CAT gratings assembly. All translations allow $1\sigma$ errors of a few
 mm, which is much larger than the size of the holder the gratings are
 placed in. This is a trivial constraint. Similarly, only rotations
-around $x$ (the short axis of the gratings) is tighter than 2
+around $x$ (the short axis of the gratings) are tighter than 2
 degrees. Rotations around $x$ makes the incoming photons hit the CAT
 gratings at an angle different from the design blaze angle and reduce
 the fraction of photons that are dispersed into the first order. Since
 photons in other orders are not reflected from the ML mirror onto the
-detector, this reduces the $A_{\mathrm{eff}}$ of the system. Longer
-wavelengths drop faster. To keep the loss of $A_{\mathrm{eff}}$ below
+detector, this reduces the $A_{\mathrm{eff}}$ of the system. To keep the loss of $A_{\mathrm{eff}}$ below
 10\%, the gratings need to be positioned within 10 arcmin of the
 nominal rotation angle.
 
@@ -639,11 +662,19 @@ instrument can no longer rotate around the nominal axis to probe
 different polarization angles. Instead, it has to rotate such that the
 source is kept at the new position determined in the calibration. On
 the other hand, tolerances for the other translations are a lot more
-relaxed around a mm or so.
+relaxed -- around a mm or so.
 
-However, for an instrument with more than one channel, the
-offset-pointing trick cannot be employed unless all ML mirrors are
-misaligned in exactly the same way.
+% However, for an instrument with more than one channel, the
+% offset-pointing trick cannot be employed unless all ML mirrors are
+% misaligned in exactly the same way.
+When there are two polarimetry channels,
+there is generally an offset position
+that will provide a match of the dispersed spectrum to the MLs
+of both channels because
+the effective area is so insensitive to cross-dispersion shifts.
+For three detectors, a suitable shift may not be possible,
+requiring that ground calibration properly align at least
+two of the ML mirrors to each other.
 
 Rotations around the long axis of the ML mirror ($x$ axis of the
 coordinate system) have a very large tolerance of a few
@@ -668,43 +699,49 @@ and consequently reduces $A_{\mathrm{eff}}$ significantly.
 Another way for photons to miss the position of the Bragg peak is when
 the lateral grading of the ML mirror does not match the gradient that
 was assumed when placing the CAT
-grarings. Figure~\ref{fig:LGML_gradient} shows that the gradient has
+gratings. Figure~\ref{fig:LGML_gradient} shows that the gradient has
 to be within about 1\% of the design value.
 
 \subsection{Detectors}
 The exact position of the detectors is not important as long as the
 signal still hits the detectors. With increasing misalignment, the
-spectral resolution of the polarimetry channel will degrade slightly,
-but the low signal in this channel will prevent an analysis of
-high-resolution spectroscopy anyway. Background also increases
-when the extraction region size needs to be increased, but again, this
-effect is negligible for any misalignment that can reasonably be
+spectral resolution of the polarimetry channel will degrade
+slightly.
+%but the low signal in this channel will prevent an analysis of
+%high-resolution spectroscopy anyway.
+Background also increases
+when the extraction region size needs to be increased, but again,
+the background is negligible and the
+effect of increasing the extraction region
+size is negligible for any misalignment that can reasonably be
 expected in the focal plane.
 
 \section{SUMMARY}
+\label{sect:summary}
 One viable concept for a soft X-ray polarimeter is based on CAT
 gratings and a multi-layer mirror. We show ray-traces for an
 instrument designed for a small orbital mission with a focal length of
 1.25~m and a single polarimetry channel. However, our results are
-easily generaliable to additional channels, since each channel acts
+easily generalizable to additional channels, since each channel acts
 essentially as its own instrument with separate CAT gratings, ML
-mirrors, and detectors. We show effective area and modulation factor
+mirrors, and detectors. We show the effective area and modulation factor
 based on this design.
 
-Gratings need to be bend to match the blaze angle in a converging
-beam. We study different bending stategies and find that bending is
-required, but the performacne shows only little sensitivity to the
+Gratings need to be bent to match the blaze angle in a converging
+beam. We study different bending strategies and find that bending is
+required, but the performance shows negligible sensitivity to the
 exact value of the radius, so that only one type of grating holder
 with the same radius for all gratings is sufficient, simplifying
 design and handling. The requirement to place all gratings such that
 diffracted rays hit the ML mirror at the position of the Bragg peak
-puts limits on the size of the CAT gratings. We find that a width of
+limits the sizes of the CAT gratings. We find that a width of
 10~mm optimizes performance.
 
 Finally, we discuss alignment tolerances for all components. In most
 degrees of freedom the requirements are so loose that they are well
-below machining tolerances. One exception to that is the ML mirror,
-which has to be positioned with in 10~$\mu$m in dispersion direction.
+below machining tolerances. However, the ML mirror
+has to be positioned to 10~$\mu$m in the dispersion direction
+relative to zeroth order, which can be calibrated and offset in flight.
 
 \acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS}
 Support
